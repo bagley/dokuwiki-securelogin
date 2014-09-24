@@ -12,9 +12,11 @@ When securelogin is used, there is always a *use securelogin* checkbox near the 
 
 Works with:
   
+  * 2014-05-05 "Ponder Stibbons"
   * 2013-12-08 "Binky"
   * 2013-05-10a Weatherwax
   * 2012-10-13 Adora Belle 
+
 
 Download and Installation
 --------------
@@ -25,6 +27,9 @@ Download and Installation
 
 Changes
 --------------
+  * **20140923** Thanks to Hideaki SAWADA
+    * Japanese language files added
+
   * **20140417**
     * Changed download link per Mikhail I. Izmestev's [request](http://github.com/izmmisha/dokuwiki-securelogin/pull/1)
     * Updates to plugin info in admin page, like the website link and more unified info.
