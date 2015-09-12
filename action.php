@@ -28,12 +28,12 @@ class action_plugin_securelogin extends DokuWiki_Action_Plugin {
 	/**
 	 * Register its handlers with the DokuWiki's event controller
 	 */
-	function register(&$controller) {
+	function register(Doku_Event_Handler $controller) {
 		$controller->register_hook('AUTH_LOGIN_CHECK', 'BEFORE',  $this, '_auth');
 		$controller->register_hook('AJAX_CALL_UNKNOWN', 'BEFORE',  $this, '_ajax_handler');
 	}
 	
-	function _auth(&$event, $param) {
+	function _auth(Doku_Event $event, $param) {
 		$this->slhlp->workCorrect(true);
 		if(!$this->slhlp || !$this->slhlp->canWork() || !$this->slhlp->haveKey(true)) return;
 		
@@ -56,7 +56,7 @@ class action_plugin_securelogin extends DokuWiki_Action_Plugin {
 		}
 	}
 	
-	function _ajax_handler(&$event, $param) {
+	function _ajax_handler(Doku_Event $event, $param) {
 		if($event->data != 'securelogin_public_key') return;
 		if(!$this->slhlp || !$this->slhlp->canWork() || !$this->slhlp->haveKey(true)) return;
 		
