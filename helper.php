@@ -204,7 +204,7 @@ class helper_plugin_securelogin extends DokuWiki_Plugin {
 			return false;
 		}
 
-		$pubkey = split("(-\n|\n-)", $pubkey);
+		$pubkey = preg_split("(-\n|\n-)", $pubkey);
 		$binary = base64_decode($pubkey[1]);
 		
 		$data = $this->decodeBER($binary);

@@ -38,10 +38,10 @@ class action_plugin_securelogin extends DokuWiki_Action_Plugin {
 		if(!$this->slhlp || !$this->slhlp->canWork() || !$this->slhlp->haveKey(true)) return;
 		
 		if(isset($_REQUEST['use_securelogin']) && $_REQUEST['use_securelogin'] && isset($_REQUEST['securelogin'])) {
-			list($request,) = split(';', $this->slhlp->decrypt($_REQUEST['securelogin']));
+			list($request,) = explode(';', $this->slhlp->decrypt($_REQUEST['securelogin']));
 			if($request) {
-				foreach(split("&", $request) as $var) {
-					list($key, $value) = split("=",$var,2);
+				foreach(explode("&", $request) as $var) {
+					list($key, $value) = explode("=",$var,2);
 					$value = urldecode($value);
 					$_REQUEST[$key] = $value;
 					$_POST[$key] = $value;
