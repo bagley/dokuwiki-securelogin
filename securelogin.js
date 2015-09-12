@@ -71,7 +71,8 @@ function ajaxSuccess(data) {
 			case 'dw__login':
 			case 'dw__register':
 				var uslNode = document.createElement('label');
-				var button = jQuery("input.button", form)[0];
+				var button = jQuery(":submit", form)[0];
+				if(!button) button = jQuery("input.button", form)[0];
 				button.parentNode.insertBefore(uslNode, button);
 				uslNode.setAttribute('class', 'simple');
 				uslNode.setAttribute('for', 'use_securelogin');
@@ -92,7 +93,8 @@ function ajaxSuccess(data) {
 			case 'add_userid':
 			case 'modify_userid':
 				var uslNode = document.createElement('tbody');
-				var button = jQuery("input.button", form)[0].parentNode.parentNode.parentNode;
+				var button = jQuery(":submit", form)[0].parentNode.parentNode.parentNode;
+				if(!button) button = jQuery("input.button", form)[0].parentNode.parentNode.parentNode;
 				button.parentNode.insertBefore(uslNode, button);
 				var tr = document.createElement('tr');
 				uslNode.appendChild(tr);
