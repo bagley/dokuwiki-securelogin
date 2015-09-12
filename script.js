@@ -1,3 +1,12 @@
+/**
+ * Securelogin Dokuwiki Plugin
+ *
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author     Mikhail I. Izmestev, Matt Bagley <securelogin@mattfiddles.com>
+ *
+ * @see also   https://www.dokuwiki.org/plugin:securelogin
+ */
+
 var securelogin_forms = new Array();
 
 function securelogin_add_js(source) {

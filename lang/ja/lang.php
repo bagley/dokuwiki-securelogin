@@ -1,11 +1,10 @@
 <?php
- 
 /**
+ * Securelogin Dokuwiki Plugin
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * 
  * @author Hideaki SAWADA <chuno@live.jp>
  */
-
 $lang['generate_key'] = '新しい鍵ペアを生成します';
 $lang['generate'] = '新規キーの生成';
 $lang['set'] = '設定';

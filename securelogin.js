@@ -1,3 +1,12 @@
+/**
+ * Securelogin Dokuwiki Plugin
+ *
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author     Mikhail I. Izmestev, Matt Bagley <securelogin@mattfiddles.com>
+ *
+ * @see also   https://www.dokuwiki.org/plugin:securelogin
+ */
+
 function esc( x ) {
 	return encodeURIComponent(x);
 }

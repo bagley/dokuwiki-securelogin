@@ -1,8 +1,15 @@
 <?php
-if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.'admin.php');
-require_once(DOKU_INC.'inc/form.php');
+/**
+ * Adminn Component for Securelogin Dokuwiki Plugin
+ *
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author     Mikhail I. Izmestev, Matt Bagley <securelogin@mattfiddles.com>
+ *
+ * @see also   https://www.dokuwiki.org/plugin:securelogin
+ */
+
+// must be run within Dokuwiki
+if(!defined('DOKU_INC')) die();
 
 /**
  * All DokuWiki plugins to extend the admin function
@@ -15,21 +22,7 @@ class admin_plugin_securelogin extends DokuWiki_Admin_Plugin {
 		$this->slhlp = plugin_load('helper', $this->getPluginName());
 		if(!$this->slhlp) msg('Loading the '.$this->getPluginName().' helper failed. Make sure that the '.$this->getPluginName().' plugin is installed.', -1);
 	}
-	
-	/**
-	 * return some info
-	 */
-	function getInfo(){
-		return array(
-            'author' => 'Mikhail I. Izmestev, Matt Bagley',
-            'email'  => 'securelogin@mattfiddles.com',
-            'date'   => '2014-09-23',
-            'name'   => 'Securelogin Plugin',
-            'desc'   => 'This plugin lets you login securely without HTTPS by sending your password in encrypted form to the server.',
-            'url'    => 'http://www.dokuwiki.org/plugin:securelogin',
-		);
-	}
-	
+
 	/**
 	 * return sort order for position in admin menu
 	 */
@@ -113,4 +106,3 @@ class admin_plugin_securelogin extends DokuWiki_Admin_Plugin {
 		html_form('test__publicKey', $form);
 	}
 }
-?>

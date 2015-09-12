@@ -1,8 +1,15 @@
-<?php 
+<?php
+/**
+ * Action Component for Securelogin Dokuwiki Plugin
+ *
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author     Mikhail I. Izmestev, Matt Bagley <securelogin@mattfiddles.com>
+ *
+ * @see also   https://www.dokuwiki.org/plugin:securelogin
+ */
+
+// must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.'action.php');
-require_once(DOKU_INC.'inc/form.php');
 
 class action_plugin_securelogin extends DokuWiki_Action_Plugin {
 	protected $slhlp;
@@ -10,21 +17,7 @@ class action_plugin_securelogin extends DokuWiki_Action_Plugin {
 	function __construct() {
 		$this->slhlp = plugin_load('helper', $this->getPluginName());
 	}
-	
-	/**
-	 * return some info
-	 */
-	function getInfo(){
-		return array(
-            'author' => 'Mikhail I. Izmestev, Matt Bagley',
-            'email'  => 'securelogin@mattfiddles.com',
-            'date'   => '2014-09-23',
-            'name'   => 'Securelogin Plugin',
-            'desc'   => 'This plugin lets you login securely without HTTPS by sending your password in encrypted form to the server.',
-            'url'    => 'http://www.dokuwiki.org/plugin:securelogin',
-		);
-	}
-	
+
 	/**
 	 * Register its handlers with the DokuWiki's event controller
 	 */

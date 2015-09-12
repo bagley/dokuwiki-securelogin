@@ -1,10 +1,14 @@
 <?php
+/**
+ * Helper Component for Securelogin Dokuwiki Plugin
+ *
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author     Mikhail I. Izmestev, Matt Bagley <securelogin@mattfiddles.com>
+ *
+ * @see also   https://www.dokuwiki.org/plugin:securelogin
+ */
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
-
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_INC.'inc/infoutils.php');
-
 
 /**
  * This is the base class for all syntax classes, providing some general stuff
@@ -39,20 +43,6 @@ class helper_plugin_securelogin extends DokuWiki_Plugin {
 		return $this->_canWork;
 	}
 
-	/**
-	 * return some info
-	 */
-	function getInfo(){
-		return array(
-            'author' => 'Mikhail I. Izmestev, Matt Bagley',
-            'email'  => 'securelogin@mattfiddles.com',
-            'date'   => '2014-09-23',
-            'name'   => 'Securelogin Plugin',
-            'desc'   => 'This plugin lets you login securely without HTTPS by sending your password in encrypted form to the server.',
-            'url'    => 'http://www.dokuwiki.org/plugin:securelogin',
-		);
-	}
-	
 	function haveKey($onlyPublic = false) {
 		if($onlyPublic) {
 			if($this->_keyInfo)	return true;
@@ -225,4 +215,3 @@ class helper_plugin_securelogin extends DokuWiki_Plugin {
 		return $this->_workCorrect;
 	}
 }
-?>
