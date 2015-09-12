@@ -10,17 +10,17 @@ require_once(DOKU_INC.'inc/infoutils.php');
  * This is the base class for all syntax classes, providing some general stuff
  */
 class helper_plugin_securelogin extends DokuWiki_Plugin {
-	var $_keyFile;
-	var $_keyIFile;
-	var $_key = null;
-	var $_keyInfo = null;
-	var $_workCorrect = false;
-	var $_canWork = false;
+	protected $_keyFile;
+	protected $_keyIFile;
+	protected $_key = null;
+	protected $_keyInfo = null;
+	protected $_workCorrect = false;
+	protected $_canWork = false;
 	
 	/**
 	 * constructor
 	 */
-	function helper_plugin_securelogin(){
+	function __construct() {
 		global $conf;
 
 		$this->_keyIFile = $conf['cachedir'].'/securelogin.ini';

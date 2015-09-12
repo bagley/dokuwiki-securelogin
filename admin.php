@@ -9,10 +9,10 @@ require_once(DOKU_INC.'inc/form.php');
  * need to inherit from this class
  */
 class admin_plugin_securelogin extends DokuWiki_Admin_Plugin {
-	var $slhlp = null;
+	protected $slhlp = null;
 	
-	function admin_plugin_securelogin () {
-		$this->slhlp =& plugin_load('helper', $this->getPluginName());
+	function __construct() {
+		$this->slhlp = plugin_load('helper', $this->getPluginName());
 		if(!$this->slhlp) msg('Loading the '.$this->getPluginName().' helper failed. Make sure that the '.$this->getPluginName().' plugin is installed.', -1);
 	}
 	

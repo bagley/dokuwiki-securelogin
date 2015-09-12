@@ -5,10 +5,10 @@ require_once(DOKU_PLUGIN.'action.php');
 require_once(DOKU_INC.'inc/form.php');
 
 class action_plugin_securelogin extends DokuWiki_Action_Plugin {
-	var $slhlp;
+	protected $slhlp;
 
-	function action_plugin_securelogin () {
-		$this->slhlp =& plugin_load('helper', $this->getPluginName());
+	function __construct() {
+		$this->slhlp = plugin_load('helper', $this->getPluginName());
 	}
 	
 	/**
