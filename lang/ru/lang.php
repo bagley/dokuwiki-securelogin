@@ -1,4 +1,9 @@
 <?php
+/**
+ * Securelogin Dokuwiki Plugin
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * 
+ */
 $lang['generate_key'] = 'Сгенерировать новую пару ключей';
 $lang['generate'] = 'Сгенерировать';
 $lang['set'] = 'Установить';
@@ -13,4 +18,3 @@ $lang['use_securelogin'] = 'Безопасный вход';
 $lang['use_secureupdate'] = 'Использовать защищённую передачу пароля';
 $lang['securelogin_conf'] = 'Настройки безопасного входа';
 $lang['sample_message'] = 'This is a test message';
-?>

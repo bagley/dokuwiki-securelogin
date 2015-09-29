@@ -1,4 +1,9 @@
 <?php
+/**
+ * Securelogin Dokuwiki Plugin
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * 
+ */
 $lang['generate_key'] = 'Génération d\'un nouveau biclef';
 $lang['generate'] = 'Générer';
 $lang['set'] = 'Accepter';
@@ -13,4 +18,3 @@ $lang['use_securelogin'] = 'Connexion sécurisée';
 $lang['use_secureupdate'] = 'Envoi sécurisé du mot de passe';
 $lang['securelogin_conf'] = 'Connexions sécurisées';
 $lang['sample_message'] = 'Ceci est un message de test.';
-?>
