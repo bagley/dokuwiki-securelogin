@@ -1,7 +1,7 @@
 base    securelogin
 author  Mikhail I. Izmestev, Matt Bagley
 email   securelogin@mattfiddles.com
-date    2014-09-23
+date    2015-09-28
 name    Securelogin Plugin
 desc    This plugin lets you login securely without HTTPS by sending your password in encrypted form to the server.
 url     http://www.dokuwiki.org/plugin:securelogin
