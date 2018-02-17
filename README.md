@@ -20,7 +20,7 @@ Download and Installation
   - Go the admin pages and select *securelogin*. Then click on the 'generate-new-key' button.
   - You're done. From then on, all passwords are encrypted before being sent.
 
-For support for these older versions use [this link](https://github.com/bagley/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip)
+For support for these older versions use this: [https://github.com/bagley/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip](https://github.com/bagley/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip)
   * 2014-05-05 "Ponder Stibbons"
   * 2013-12-08 "Binky"
   * 2013-05-10a Weatherwax
@@ -53,7 +53,7 @@ use_securelogin:1
 securelogin:M66YMHFzjl9qXa96zr2JzDWlV3WTE+4mOgJZNNr3yW9xPzSORtSIjp+ZNczopNUp5N0M0ASiqutgf1nio+iTNj3pS24kHD1LZb6GcG7cFvpr/uzfxJsO8jAbFD6/ZkB0xy9vBMabn3BYP7GWLrTR3b/7zNdla/FdqjX9U48dHMrcO2/ZFJKLsdzt84/bC+3xoV7/qC/BZO5AbQ37SvLEC7DaMTMtbSqlF573Y0iOMb3wYe1rj2m/HQiBM8ro25OBfnUxmgJFMVVkfkLdNUepRjUeeJSXF+R5XDcO2L4uX9D8AOE8nSecRn+0gqwz6PzPPqEpv60y0Io1rZXevG+I9Q==
 ```
 
-The javascript on the page takes the form's password variable `p=MySecretPa$$word` and encrypts as the variable `securelogin`, using the provided salt. It also replaces `p`'s value with stars so it can't submit the password in the clear. 
+The javascript on the page takes the form's password variable `p=MySecretPa$$word`, encrypts it with the provided salt (that changes on each page load), and sets the result as `securelogin`. It also replaces `p`'s value with stars so it can't submit the password in the clear.
 
 When the server receives the data, it sees that `use_securelogin` is set to `1` (true), so it knows the password was encrypted. It will decrypt the `securelogin` variable and separate it from the salt value. From this it gets the `p=MySecretPa$$word` value, which it sets so the Dokuwiki authentication routines have it. Dokuwiki can then compare the passwords like it normally does.
 
