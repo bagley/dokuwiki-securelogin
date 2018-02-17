@@ -7,6 +7,18 @@ When securelogin is used, there is always a *use securelogin* checkbox near the 
 
 Also, whenever a password has to be entered, it is automagically encrypted by this plugin, be it on the login, profile or the admin page.
 
+In short, it takes your password:
+
+```
+p:MySecretPa$$word
+```
+
+And makes sure the login pages submit it instead like this:
+
+```
+securelogin:M66YMHFzjl9qXa96zr2JzDWlV3WTE+4mOgJZNNr3yW9xPzSORtSIjp+ZNczopNUp5N0M0ASiqutgf1nio+iTN....
+```
+
 Works with:
   * 2017-02-19 "Frusterick Manners"
   * 2016-06-26 "Elenor Of Tsort"
