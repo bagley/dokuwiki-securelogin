@@ -49,10 +49,12 @@ function secure_add_user() {
     var form = securelogin_get_form(jQuery('#add_userid')[0]);
     if(!form || !form.use_securelogin.checked) return true;
     var pass = form.add_userpass;
+    var pass2 = form.add_userpass2;
     var sectok = form.sectok;
 
-    form.securelogin.value = encrypt("userpass="+esc(pass.value)+";"+sectok.value);
+    form.securelogin.value = encrypt("userpass="+esc(pass.value)+"&userpass2="+esc(pass2.value)+";"+sectok.value);
     pass.value = "******";
+    pass2.value = "******";
     return true;
 }
 
@@ -60,10 +62,12 @@ function secure_modify_user() {
     var form = securelogin_get_form(jQuery('#modify_userid')[0]);
     if(!form || !form.use_securelogin.checked) return true;
     var pass = form.modify_userpass;
+    var pass2 = form.modify_userpass2;
     var sectok = form.sectok;
 
-    form.securelogin.value = encrypt("userpass="+esc(pass.value)+";"+sectok.value);
+    form.securelogin.value = encrypt("userpass="+esc(pass.value)+"&userpass2="+esc(pass2.value)+";"+sectok.value);
     pass.value = "******";
+    pass2.value = "******";
     return true;
 }
 
