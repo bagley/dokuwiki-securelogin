@@ -26,6 +26,52 @@ For support for these older versions use [this link](https://github.com/bagley/d
   * 2013-05-10a Weatherwax
   * 2012-10-13 Adora Belle
 
+How it works
+--------------
+
+Normally when you submit your 'MySecretPa$$word', you will see it in the data transfer:
+
+```
+sectok:
+id:start
+do:login
+u:MyUser
+p:MySecretPa$$word
+```
+
+You can easily see the 'MySecretPa$$word' in the above example.
+
+But when you use this plugin, it will encrypt the password, which can only be decrypted on the server.
+
+```
+sectok:
+id:start
+do:login
+u:MyUser
+p:******
+use_securelogin:1
+securelogin:M66YMHFzjl9qXa96zr2JzDWlV3WTE+4mOgJZNNr3yW9xPzSORtSIjp+ZNczopNUp5N0M0ASiqutgf1nio+iTNj3pS24kHD1LZb6GcG7cFvpr/uzfxJsO8jAbFD6/ZkB0xy9vBMabn3BYP7GWLrTR3b/7zNdla/FdqjX9U48dHMrcO2/ZFJKLsdzt84/bC+3xoV7/qC/BZO5AbQ37SvLEC7DaMTMtbSqlF573Y0iOMb3wYe1rj2m/HQiBM8ro25OBfnUxmgJFMVVkfkLdNUepRjUeeJSXF+R5XDcO2L4uX9D8AOE8nSecRn+0gqwz6PzPPqEpv60y0Io1rZXevG+I9Q==
+```
+
+The javascript on the page takes the form's password variable `p=MySecretPa$$word` and encrypts as the variable `securelogin`, using the provided salt. It also replaces `p`'s value with stars so it can't submit the password in the clear. 
+
+When the server receives the data, it sees that `use_securelogin` is set to `1` (true), so it knows the password was encrypted. It will decrypt the `securelogin` variable and separate it from the salt value. From this it gets the `p=MySecretPa$$word` value, which it sets so the Dokuwiki authentication routines have it. Dokuwiki can then compare the passwords like it normally does.
+
+This same process happens during the add user, modify user, and edit profile options. This is what will be seen if someone views a user changing their password:
+
+```
+do:profile
+fullname:MyUser
+email:user@example.com
+newpass:******
+passchk:******
+oldpass:******
+use_securelogin:1
+securelogin:mCUIwYbHRgNjmAkr1CHssH8g1ZAgGKIxsFsMZUN1XM703V2g4hB5upzfJeVyE/aT9ByOYxQChbhRyJezjD7jO4LKwlgBR/Jnqkr+rUr70MLcoRybM8maTGdAGDM3VweSylqAGOASKb87hKYb0URUFo+yfGaKp572IWCfSZDHLrP1Hrs/f7EYKXozXpMNHA3l/VXNm2wGAwvkvnfFgkRZonrdfdUlLDC0OkBpa3WawMqoYb+1/kcuGsBcAve0Tp+uMQZw8FwHj8SOp9kJLUnEqXrop2pXa3mc9j8NS54CeCbJuJ0qfEhUHIE9/BHUgbmCPQV6XNWttZbRp8r1Q1dG/g==
+```
+
+In this case, all three passwords are encrypted into `securelogin`, and the post values replaced with stars.
+
 Changes
 --------------
   * **20180217** Thanks to [Christian Paul](https://github.com/jaller94) for reporting
