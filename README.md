@@ -103,14 +103,14 @@ Changes
   * **20180217** Thanks to [Christian Paul](https://github.com/jaller94) for reporting
     * Fixed issue where second password was not encrypted on add/modify users
 
-  * **20150928** Thanks to Satoshi Sahara
+  * **20150928** Thanks to [Satoshi Sahara](https://github.com/ssahara)
     * made compatible with DokuWiki 2015-08-10 "Detritus"
     * replace deprecated split() function call
     * prevent PHP error output
     * use PHP5 constructor method for classes
     * Improved coding style and added license header in source files
     
-  * **20140923** Thanks to Hideaki SAWADA
+  * **20140923** Thanks to [Hideaki SAWADA](https://github.com/sawachan)
     * Japanese language files added
 
   * **20140417**
