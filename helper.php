@@ -128,38 +128,38 @@ class helper_plugin_securelogin extends DokuWiki_Plugin {
 
             $data = my_unpack("C1type/c1length", $bin, 2);
 
-            if($data[length] < 0) {
-                $count = $data[length] & 0x7F;
-                $data[length] = 0;
+            if($data['length'] < 0) {
+                $count = $data['length'] & 0x7F;
+                $data['length'] = 0;
                 while($count) {
-                    $data[length] <<= 8;
+                    $data['length'] <<= 8;
                     $tmp = my_unpack("C1length", $bin, 1);
-                    $data[length] += $tmp[length];
+                    $data['length'] += $tmp['length'];
                     $count--;
                 }
             }
 
-            switch($data[type]) {
+            switch($data['type']) {
                 case 0x30:
-                    $data[value] = array();
+                    $data['value'] = array();
                     do {
                         $tmp = readBER($bin);
                         if($tmp)
-                            $data[value][] = $tmp;
+                            $data['value'][] = $tmp;
                     } while($tmp);
                     break;
                 case 0x03:
                     $null = my_unpack("C1", $bin, 1);
-                    $data[value] = readBER($bin);
+                    $data['value'] = readBER($bin);
                     break;
                 case 0x04:
-                    $data[value] = readBER($bin);
+                    $data['value'] = readBER($bin);
                     break;
                 default: 
-                    $count = $data[length];
+                    $count = $data['length'];
                     while($count) {
                         $tmp = my_unpack("C1data", $bin, 1);
-                        $data[value] .= sprintf("%02X", $tmp[data]);
+                        $data['value'] .= sprintf("%02X", $tmp['data']);
                         $count--;
                     }
             }
@@ -170,22 +170,22 @@ class helper_plugin_securelogin extends DokuWiki_Plugin {
 
     function getPublicKeyInfo($pubkey) {
         function findKeyInfo($data, &$pubkeyinfo) {
-            if($data[type] == 48) {
-                if(count($data[value]) != 9) {
-                    foreach($data[value] as $subdata) {
+            if($data['type'] == 48) {
+                if(count($data['value']) != 9) {
+                    foreach($data['value'] as $subdata) {
                         if(findKeyInfo($subdata, $pubkeyinfo))
                             return true;
                     }
                 } else {
                     $pubkeyinfo = array(
-                        "modulus" => $data[value][1][value],
-                        "exponent" => $data[value][2][value],
+                        "modulus" => $data['value'][1]['value'],
+                        "exponent" => $data['value'][2]['value'],
                     );
                     return true;
                 }
             }
-            elseif($data[type] == 4) {
-                return findKeyInfo($data[value], $pubkeyinfo);
+            elseif($data['type'] == 4) {
+                return findKeyInfo($data['value'], $pubkeyinfo);
             }
             return false;
         }
@@ -198,8 +198,8 @@ class helper_plugin_securelogin extends DokuWiki_Plugin {
         findKeyInfo($data, $pubkeyinfo);
 /*
         $pubkeyinfo = array(
-            "modulus" => $data[value][1][value][2][value][value][1][value],
-            "exponent" => $data[value][1][value][2][value][value][2][value],
+            "modulus" => $data['value'][1]['value'][2]['value']['value'][1]['value'],
+            "exponent" => $data['value'][1]['value'][2]['value']['value'][2]['value'],
         );
 */
         return $pubkeyinfo;
