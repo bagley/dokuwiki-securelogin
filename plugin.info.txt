@@ -1,7 +1,7 @@
 base    securelogin
 author  Mikhail I. Izmestev, Matt Bagley
 email   securelogin@mattfiddles.com
-date    2018-02-17
+date    2020-04-18
 name    Securelogin Plugin
 desc    This plugin encrypts submitted passwords, giving you and your users an extra layer of security.
 url     http://www.dokuwiki.org/plugin:securelogin

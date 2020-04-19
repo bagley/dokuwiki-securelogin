@@ -1,11 +1,11 @@
 Securelogin Dokuwiki Plugin
 ==============
 
-This plugin uses [Tom Wu's implementation of RSA algorithm in JavaScript](http://www-cs-students.stanford.edu/~tjw/jsbn/) on the client to encrypt the login password with the server's public key. The encrypted password is then sent to the server where it can be decrypted. Man-in-the-middle attacks are prevented by using a variable token (salt) added to the password before encrypting. Therefore, replay attacks don't work.
+This plugin uses [Tom Wu's implementation of the RSA algorithm in JavaScript](http://www-cs-students.stanford.edu/~tjw/jsbn/) on the client browser (before it leaves your computer) to encrypt the login password with the server's public key. The encrypted password is then sent to the server where it can be decrypted. Man-in-the-middle attacks are prevented by adding a variable token (salt) to the password before encrypting. Therefore, replay attacks don't work.
 
-When securelogin is used, there is always a *use securelogin* checkbox near the password field. If the browser has no JavaScript or JavaScript is disabled, then obviously, the passwords are sent in clear text, as they are by default with DokuWiki. In this case though, the user *should* notice the absence of the checkbox.
+When Securelogin is used, there is always a *use securelogin* checkbox near the password field. If the browser has no JavaScript or JavaScript is disabled, then obviously, the passwords are sent in clear text, as they are by default with DokuWiki. In this case though, the user *should* notice the absence of the checkbox.
 
-Also, whenever a password has to be entered, it is automagically encrypted by this plugin, be it on the login, profile or the admin page.
+Also, whenever a password has to be entered, it is automagically encrypted by this plugin, be it on the login, profile, or admin pages.
 
 In short, it takes your password:
 
@@ -13,26 +13,37 @@ In short, it takes your password:
 p:MySecretPa$$word
 ```
 
-And makes sure the login pages submit it instead like this:
+And instead has the login/profile/admin page submit the password as:
 
 ```
 securelogin:M66YMHFzjl9qXa96zr2JzDWlV3WTE+4mOgJZNNr3yW9xPzSORtSIjp+ZNczopNUp5N0M0ASiqutgf1nio+iTN....
 ```
 
 Works with:
+  * 2018-04-22b "Greebo"
   * 2017-02-19 "Frusterick Manners"
   * 2016-06-26 "Elenor Of Tsort"
   * 2015-08-10 "Detritus"
   * 2014-09-29 "Hrun"
   
-Download and Installation
+Installation and Setup
+----------------------
+
+  - Search for and install the plugin using the [Extension Manager](https://www.dokuwiki.org/plugin:extension).
+  - Once installed, go the Admin page and select "Secure login configuration".
+  - Under "Generate new key pair", click the "Generate" button.
+  - Click the "Test" button to verify your setup. If all is working, a bubble will appear containing whatever was in the "Test Message" box.
+
+You're done. From then on, all passwords are encrypted before being sent.
+
+To manually install the plugin, please see the [manual install instructions](https://www.dokuwiki.org/plugin_installation_instructions). Then follow the last three steps above.
+
+Older Versions
 --------------
 
-  - Download and install the plugin using the [Plugin Manager](https://www.dokuwiki.org/plugin:plugin). You can search for "securelogin" to find the plugin in the Plugin Manager. Refer to [Plugins](https://www.dokuwiki.org/plugins) on how to install plugins manually.
-  - Go the admin pages and select *securelogin*. Then click on the 'generate-new-key' button.
-  - You're done. From then on, all passwords are encrypted before being sent.
+> Don't use this unless you have to. It's not supported. It's better to upgrade your Installation.
 
-For support for these older versions use this: [https://github.com/bagley/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip](https://github.com/bagley/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip)
+For support for these older versions use [this version of Securelogin](https://github.com/bagley/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip) and install it manually.
   * 2014-05-05 "Ponder Stibbons"
   * 2013-12-08 "Binky"
   * 2013-05-10a Weatherwax
@@ -86,6 +97,9 @@ In this case, all three passwords are encrypted into `securelogin`, and the post
 
 Changes
 --------------
+  * **20200418**
+    * Quoted array keys for php 7.2
+
   * **20180217** Thanks to [Christian Paul](https://github.com/jaller94) for reporting
     * Fixed issue where second password was not encrypted on add/modify users
 
