@@ -1,9 +1,10 @@
-Securelogin Dokuwiki Plugin
-==============
+# Securelogin Dokuwiki Plugin
+
+**Not Maintained** - *While it still works with the below versions, this repo has been archived. See the [Plugin page](https://www.dokuwiki.org/plugin:securelogin) for any updated details, patches, or for those who may wish to adopt it.*
 
 This plugin uses [Tom Wu's implementation of the RSA algorithm in JavaScript](http://www-cs-students.stanford.edu/~tjw/jsbn/) on the client browser (before it leaves your computer) to encrypt the login password with the server's public key. The encrypted password is then sent to the server where it can be decrypted. Man-in-the-middle attacks are prevented by adding a variable token (salt) to the password before encrypting. Therefore, replay attacks don't work.
 
-When Securelogin is used, there is always a *use securelogin* checkbox near the password field. If the browser has no JavaScript or JavaScript is disabled, then obviously, the passwords are sent in clear text, as they are by default with DokuWiki. In this case though, the user *should* notice the absence of the checkbox.
+When Securelogin is used, there is always a `use securelogin` checkbox near the password field. If the browser has no JavaScript or JavaScript is disabled, then obviously, the passwords are sent in clear text, as they are by default with DokuWiki. In this case though, the user *should* notice the absence of the checkbox.
 
 Also, whenever a password has to be entered, it is automagically encrypted by this plugin, be it on the login, profile, or admin pages.
 
@@ -19,15 +20,27 @@ And instead has the login/profile/admin page submit the password as:
 securelogin:M66YMHFzjl9qXa96zr2JzDWlV3WTE+4mOgJZNNr3yW9xPzSORtSIjp+ZNczopNUp5N0M0ASiqutgf1nio+iTN....
 ```
 
-Works with:
+### Works with
+
   * 2018-04-22b "Greebo"
   * 2017-02-19 "Frusterick Manners"
   * 2016-06-26 "Elenor Of Tsort"
   * 2015-08-10 "Detritus"
   * 2014-09-29 "Hrun"
-  
-Installation and Setup
-----------------------
+
+### Please use HTTPS, CORS, and others
+
+This plugin was made when HTTPS was pricey (for a wiki), but we still wanted as much security as we could get. Now that one can easily have HTTPS, CORS, [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity), etc, it's not as relevant. Consider it as just a possible extra layer of security. Your first priority should always be a good server setup with the latest in security. I've left this here for those that want it.
+
+Because good security is like a onion. You want a lot of layers in order keep things protected even *when* some layers fail.
+
+### CAPTCHA Plugin Login Issue
+
+If the [CAPTCHA plugin](https://www.dokuwiki.org/plugin:captcha) is enabled on the login page with this plugin, the CAPTCHA will not be processed. ie, the user can enter whatever, and the login will be processed like normal. So Bots can attempt to login and ignore the CAPTCHA.
+
+A wrong password will still fail. And Securelogin will still encrypt the password. The login will just act as if CAPTCHA is not installed. The CAPTCHA plugin should still work elsewhere on the site.
+
+### Installation and Setup
 
   - Search for and install the plugin using the [Extension Manager](https://www.dokuwiki.org/plugin:extension).
   - Once installed, go the Admin page and select "Secure login configuration".
@@ -38,8 +51,7 @@ You're done. From then on, all passwords are encrypted before being sent.
 
 To manually install the plugin, please see the [manual install instructions](https://www.dokuwiki.org/plugin_installation_instructions). Then follow the last three steps above.
 
-Older Versions
---------------
+### Older Versions
 
 > Don't use this unless you have to. It's not supported. It's better to upgrade your Installation.
 
@@ -49,8 +61,7 @@ For support for these older versions use [this version of Securelogin](https://g
   * 2013-05-10a Weatherwax
   * 2012-10-13 Adora Belle
 
-How it works
---------------
+## Details of how it works
 
 Normally when you submit your 'MySecretPa$$word', you will see it in the data transfer:
 
@@ -95,8 +106,8 @@ securelogin:mCUIwYbHRgNjmAkr1CHssH8g1ZAgGKIxsFsMZUN1XM703V2g4hB5upzfJeVyE/aT9ByO
 
 In this case, all three passwords are encrypted into `securelogin`, and the post values replaced with stars.
 
-Changes
---------------
+## Changelog
+
   * **20200418**
     * Quoted array keys for php 7.2
 
@@ -109,7 +120,7 @@ Changes
     * prevent PHP error output
     * use PHP5 constructor method for classes
     * Improved coding style and added license header in source files
-    
+
   * **20140923** Thanks to [Hideaki SAWADA](https://github.com/sawachan)
     * Japanese language files added
 
@@ -132,7 +143,7 @@ Changes
   * **20101101** Thanks to Christophe Martin
     * fix bug with some chars in passwords
 
-  * **20091213** 
+  * **20091213**
     * add support of usermanager plugin
 
   * **20091206** Thanks to Christophe Martin
@@ -145,4 +156,3 @@ Changes
   * **20090802** Thanks to Christophe Martin
     * fix problem with URL-rewrite DokuWiki method
     * add French translation
-

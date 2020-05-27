@@ -3,7 +3,8 @@
  * Helper Component for Securelogin Dokuwiki Plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Mikhail I. Izmestev, Matt Bagley <securelogin@mattfiddles.com>
+ * @author     Mikhail I. Izmestev
+ * @maintainer Matt Bagley
  *
  * @see also   https://www.dokuwiki.org/plugin:securelogin
  */

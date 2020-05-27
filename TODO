@@ -1,0 +1,13 @@
+# Todo and Ideas
+
+## Optional Required Encryption
+
+Add option to forbid logging in without the password encrypted (Warning, this could lock you out)
+- would need the login boxes be hidden if javascript is not enabled.
+- probably have to hook into the login function and remove the html for the boxes, then add them back in with javascript.
+
+## Add SHA256 verification codes.
+
+Add sha256 sums to the HTML, to have the browser check that they have not been tampered with in transit.
+
+
