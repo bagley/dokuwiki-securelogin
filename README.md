@@ -28,6 +28,11 @@ securelogin:M66YMHFzjl9qXa96zr2JzDWlV3WTE+4mOgJZNNr3yW9xPzSORtSIjp+ZNczopNUp5N0M
   * 2015-08-10 "Detritus"
   * 2014-09-29 "Hrun"
 
+### Uses RSA, which may be vulnerable to certain attacks
+
+Attacks against RSA have become easier. This plugin uses RSA and needs to be rewritten to use a different library/encryption mechanism. As it is, it may be vulnerable to certain targeted man-in-the-middle attacks. Though it appears that those attacks may still be fairly expensive against a regular wiki site. If in doubt, see the next section.
+
+
 ### Please use HTTPS, CORS, and others
 
 This plugin was made when HTTPS was pricey (for a wiki), but we still wanted as much security as we could get. Now that one can easily have HTTPS, CORS, [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity), etc, it's not as relevant. Consider it as just a possible extra layer of security. Your first priority should always be a good server setup with the latest in security. I've left this here for those that want it.
@@ -55,7 +60,7 @@ To manually install the plugin, please see the [manual install instructions](htt
 
 > Don't use this unless you have to. It's not supported. It's better to upgrade your Installation.
 
-For support for these older versions use [this version of Securelogin](https://github.com/bagley/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip) and install it manually.
+For support for these older versions use [this version of Securelogin](https://github.com/dokuwiki-securelogin-archive/dokuwiki-securelogin/archive/c1f0a0e018cedfd29a48ab157098efe480e37049.zip) and install it manually.
   * 2014-05-05 "Ponder Stibbons"
   * 2013-12-08 "Binky"
   * 2013-05-10a Weatherwax
@@ -107,6 +112,9 @@ securelogin:mCUIwYbHRgNjmAkr1CHssH8g1ZAgGKIxsFsMZUN1XM703V2g4hB5upzfJeVyE/aT9ByO
 In this case, all three passwords are encrypted into `securelogin`, and the post values replaced with stars.
 
 ## Changelog
+
+  * **20200527**
+    * Updated url to archived location of repo. (No changes, so didn't modify version number)
 
   * **20200418**
     * Quoted array keys for php 7.2
