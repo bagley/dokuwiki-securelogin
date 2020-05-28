@@ -114,7 +114,7 @@ In this case, all three passwords are encrypted into `securelogin`, and the post
 ## Changelog
 
   * **20200527**
-    * Updated url to archived location of repo. (No changes, so didn't modify version number)
+    * Updated url to archived location of repo.
 
   * **20200418**
     * Quoted array keys for php 7.2
